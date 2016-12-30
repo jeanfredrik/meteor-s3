@@ -122,6 +122,9 @@ uploadFile = (file, ops, callback) ->
 		uploader:ops.uploader
 		status:"signing"
 
+	if ops.transformInitialFileData
+		ops.transformInitialFileData(initial_file_data, file)
+
 	id = S3.collection.insert initial_file_data
 
 	ops.connection.call "_s3_sign",
