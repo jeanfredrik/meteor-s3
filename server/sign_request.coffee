@@ -44,6 +44,7 @@ Meteor.methods
 				{"key":key}
 				{"bucket":ops.bucket}
 				{"Content-Type":ops.file_type}
+				{"Cache-Control":S3.config.cacheControl} if S3.config.cacheControl
 				{"acl":ops.acl}
 				# {"x-amz-server-side-encryption": "AES256"}
 				{"x-amz-algorithm": "AWS4-HMAC-SHA256"}
@@ -80,6 +81,7 @@ Meteor.methods
 		meta_uuid:meta_uuid
 		meta_date:meta_date
 		meta_credential:meta_credential
+		cache_control:S3.config.cacheControl
 
 
 # crypto = Npm.require("crypto")
@@ -95,5 +97,3 @@ calculate_signature = (policy, region) ->
 
 	HmacSHA256 policy, signature_key
 		.toString Crypto.enc.Hex
-
-

@@ -148,6 +148,7 @@ uploadFile = (file, ops, callback) ->
 				form_data.append "key", result.key
 				form_data.append "acl", result.acl
 				form_data.append "Content-Type",result.file_type
+				if result.cache_control then form_data.append "Cache-Control",result.cache_control
 
 				form_data.append "X-Amz-Date", result.meta_date
 				# form_data.append "x-amz-server-side-encryption", "AES256"
